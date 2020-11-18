@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package docker.proto;
+
+import "google/protobuf/empty.proto";
+import "scalapb/scalapb.proto";
+
+option java_multiple_files = true;
+option java_package = "docker.proto";
+
+option (scalapb.options) = {
+  flat_package: true
+};
+
+message PingRequest {
+  string message = 1;
+}
+
+message PingResponse {
+  string result = 1;
+}
+
+service ServerService {
+  rpc Ping(PingRequest) returns (PingResponse);
+}

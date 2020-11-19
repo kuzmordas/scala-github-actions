@@ -17,13 +17,8 @@ jobs:
         run: sbt test
       - name: Build image
         run: sbt docker:publishLocal
-      - name: Echo docker images
-        run: echo "$(docker images)"
-        shell: bash
-#      - name: Push to Docker hun
-#        uses: docker/build-push-action@v1
-#        with:
-#          username: ${{ secrets.DOCKER_NAME }}
-#          password: ${{ secrets.DOCKER_PASSWORD }}
-#          repository: kuzmo/scala-docker
-#          tag_with_ref: true
+      - name: Push to Docker hun
+        run: |
+          echo "$(docker images)"
+          docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
+          docker push kuzmo/scala-docker

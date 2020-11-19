@@ -69,3 +69,16 @@ lazy val main = (project in file("main"))
       "org.typelevel"              %% "cats-effect"     % catsEffectVersion
     )
   )
+
+lazy val tests =
+  project
+    .in(file("tests"))
+    .dependsOn(main)
+    .settings(
+      name := "tests",
+      scalaVersion := "2.13.3",
+      libraryDependencies ++= Seq(
+        "org.scalactic" %% "scalactic" % "3.2.0" % Test,
+        "org.scalatest" %% "scalatest" % "3.2.0" % Test,
+      )
+    )

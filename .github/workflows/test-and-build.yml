@@ -25,5 +25,4 @@ jobs:
       - name: Push to Docker hun
         run: |
           echo "$(docker images)"
-#          docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
           docker push kuzmo/scala-docker

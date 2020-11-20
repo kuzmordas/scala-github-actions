@@ -17,6 +17,7 @@ jobs:
         run: |
           sbt "project main" coverage test coverageReport
           echo $(pwd)
+          echo "$(ls -l)"
       - name: Publish coverage report
         uses: actions/upload-artifact@v2-preview
         with:

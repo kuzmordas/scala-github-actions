@@ -64,9 +64,13 @@ lazy val main = (project in file("main"))
     name := "main",
     scalaVersion := "2.13.3",
     scalacOptions += "-Ymacro-annotations",
+    coverageEnabled := true,
     libraryDependencies ++= Seq(
       "org.typelevel"              %% "cats-core"       % catsVersion,
-      "org.typelevel"              %% "cats-effect"     % catsEffectVersion
+      "org.typelevel"              %% "cats-effect"     % catsEffectVersion,
+      "org.scalactic" %% "scalactic" % "3.2.0" % Test,
+      "org.scalatest" %% "scalatest" % "3.2.0" % Test,
+      "junit"         % "junit"      % "4.13"  % Test
     )
   )
 

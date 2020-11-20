@@ -1,13 +1,13 @@
-package docker.tests
+package docker.it
 
-import scala.concurrent.ExecutionContext
 import cats.effect.{ConcurrentEffect, ContextShift, IO, Timer}
+import docker.proto.{PingRequest, PingResponse, ServerServiceFs2Grpc}
 import io.grpc.{ManagedChannelBuilder, Metadata}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
-import docker.proto.{PingRequest, PingResponse, ServerServiceFs2Grpc}
-import docker.main.Main
+
+import scala.concurrent.ExecutionContext
 
 class MainTest extends AnyFlatSpec with should.Matchers with BeforeAndAfterAll {
 

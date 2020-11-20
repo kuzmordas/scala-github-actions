@@ -21,6 +21,6 @@ jobs:
       - name: Publish coverage report
         uses: actions/upload-artifact@v2-preview
         with:
-          path: /main/target/scala-2.13/scoverage-report/*
+          path: ./main/target/scala-2.13/scoverage-report/*
       - name: Build image
         run: sbt docker:publishLocal

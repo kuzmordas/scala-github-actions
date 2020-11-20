@@ -14,13 +14,20 @@ jobs:
         with:
           java-version: 1.8
       - name: Run tests
-        run: |
-          sbt "project main" coverage test coverageReport
-          echo $(pwd)
-          echo "$(ls -l)"
+        run: sbt "project main" coverage test coverageReport
       - name: Publish coverage report
         uses: actions/upload-artifact@v2-preview
         with:
           path: ./main/target/scala-2.13/scoverage-report/*
+          name: test-coverage
       - name: Build image
         run: sbt docker:publishLocal
+      - name: Docker login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_NAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push to Docker hun
+        run: |
+          echo "$(docker images)"
+          docker push kuzmo/scala-docker

@@ -14,8 +14,10 @@ object GrpcServer {
 
 class GrpcServer()(implicit concurrentEffect: ConcurrentEffect[IO], contextShift: ContextShift[IO], timer: Timer[IO]) {
 
-  val service: ServerServiceFs2Grpc[IO, Metadata] = (request: PingRequest, ctx: Metadata) =>
+  val service: ServerServiceFs2Grpc[IO, Metadata] = (request: PingRequest, ctx: Metadata) => {
     IO(PingResponse(Service.processString(request.message)))
+  }
+
 
   def build(): fs2.Stream[IO, Nothing] =
     ServerBuilder

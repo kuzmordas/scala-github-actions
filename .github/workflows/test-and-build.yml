@@ -17,7 +17,7 @@ jobs:
           java-version: 1.8
       - name: Branches
         run: |
-          echo "branch: ${{ github.event.ref }}, target: ${{ github.event.pull_request.base.ref }}"
+          echo "branch: ${{ GITHUB_REF }}, target: ${{ github.event.pull_request.base.ref }}"
       - name: Run tests
         run: sbt "project main" coverage test coverageReport
       - name: Publish coverage report

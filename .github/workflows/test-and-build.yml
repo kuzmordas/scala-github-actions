@@ -1,8 +1,6 @@
 name: Deploy
 
 on:
-  push:
-
   pull_request:
     types: [ opened, edited ]
 
@@ -19,7 +17,7 @@ jobs:
           java-version: 1.8
       - name: Branches
         run: |
-          echo "${{ github.event.ref }} ${{ github.event.pull_request.base.ref }}"
+          echo "branch: ${{ github.event.ref }}, target: ${{ github.event.pull_request.base.ref }}"
       - name: Run tests
         run: sbt "project main" coverage test coverageReport
       - name: Publish coverage report

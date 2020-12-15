@@ -2,6 +2,7 @@ package docker.it
 
 import cats.effect.{ConcurrentEffect, ContextShift, IO, Timer}
 import docker.proto.{PingRequest, PingResponse, ServerServiceFs2Grpc}
+import docker.main.Main
 import io.grpc.{ManagedChannelBuilder, Metadata}
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
